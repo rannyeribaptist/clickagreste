@@ -1,0 +1,23 @@
+@import "variables";
+
+.button {
+  border: 2px solid darken($blue, 10%);
+  border-radius: 10px;
+  padding: 7px 13px;
+  color: white;
+  font-size: 15px;
+  transition: padding 0.2s;
+  cursor: pointer;
+
+  @include breakpoint("touch") {
+    position: absolute;
+    z-index: 99;
+    font-size: 15px;
+  }
+
+  &--right {
+    @include breakpoint("small-up") { float: right }
+  }
+
+  @include colors("background-color");
+}
