@@ -5,7 +5,7 @@ class CreateCompanies < ActiveRecord::Migration[6.0]
       t.string :tax_id
       t.string :picture
       t.string :description
-      t.integer :priority
+      t.integer :priority, default: 0
 
       t.timestamps
     end
