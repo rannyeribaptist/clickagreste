@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.where(city_id: params[:city_id])
   end
 
   # GET /companies/1
@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.build_address
   end
 
   # GET /companies/1/edit
@@ -69,6 +70,8 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :tax_id, :picture, :description, :priority, :categories)
+      params.require(:company).permit(:name, :tax_id, :picture, :description, :priority, :city_id, :company_categories => [],
+                                      :address_attributes => [:street, :neighbohood, :number, :zip_code, :city, :complement],
+                                      :contact_infos_attributes => [:name, :icon, :contact, :id, :_destroy])
     end
 end

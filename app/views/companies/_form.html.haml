@@ -1,0 +1,38 @@
+= simple_form_for(@company) do |f|
+  - if company.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(company.errors.count, "error")
+        prohibited this company from being saved:
+      %ul
+        - company.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.input :name
+  .field
+    = f.input :tax_id
+  .field
+    = f.input :picture
+  .field
+    = f.input :description
+  .field
+    = f.input :priority
+  .field
+    = f.input :company_categories, as: :select, collection: Category.all, label_method: :name, value_method: :id, input_html: { multiple: true }
+    = f.input :city_id, as: :select, collection: City.all, label_method: :name
+
+    = f.simple_fields_for :address do |g|
+      = g.input :street
+      = g.input :neighbohood
+      = g.input :city
+      = g.input :number
+      = g.input :complement
+      = g.input :zip_code
+
+    #contacts
+      = f.simple_fields_for :contact_infos do |h|
+        = render "contact_info_fields", f: h
+      .links
+        = link_to_add_association 'add contact', f, :contact_infos
+  .actions
+    = f.submit

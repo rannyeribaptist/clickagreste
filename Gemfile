@@ -25,6 +25,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Filterrific is a Rails Engine plugin that makes it easy to filter, search, and sort your ActiveRecord lists
+gem 'filterrific'
+# This gem provides a simple and extremely flexible way to upload files from Ruby applications.
+gem 'carrierwave', '~> 2.0'
+# Rails forms made easy.
+gem 'simple_form'
+# Haml-rails provides Haml generators for Rails 5.
+gem "haml-rails", "~> 2.0"
+# Cocoon makes it easier to handle nested forms.
+gem "cocoon"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

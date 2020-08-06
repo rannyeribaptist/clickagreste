@@ -1,0 +1,27 @@
+%p#notice= notice
+%h1 Companies
+%table
+  %thead
+    %tr
+      %th Name
+      %th Tax
+      %th Picture
+      %th Description
+      %th Priority
+      %th Categories
+      %th{:colspan => "3"}
+  %tbody
+    - @companies.order("priority desc").each do |company|
+      - if company.company_categories.include? params[:category_id]
+        %tr
+          %td= company.name
+          %td= company.tax_id
+          %td= company.picture
+          %td= company.description
+          %td= company.priority
+          %td= company.categories
+          %td= link_to 'Show', company
+          %td= link_to 'Edit', edit_company_path(company)
+          %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Company', new_company_path

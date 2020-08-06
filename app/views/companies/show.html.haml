@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @company.name
+%p
+  %strong Tax:
+  = @company.tax_id
+%p
+  %strong Picture:
+  = @company.picture
+%p
+  %strong Description:
+  = @company.description
+%p
+  %strong Priority:
+  = @company.priority
+%p
+  %strong Categories:
+  = @company.company_categories
+= link_to 'Edit', edit_company_path(@company)
+|
+= link_to 'Back', companies_path
