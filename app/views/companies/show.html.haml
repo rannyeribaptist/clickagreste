@@ -1,22 +1,61 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @company.name
-%p
-  %strong Tax:
-  = @company.tax_id
-%p
-  %strong Picture:
-  = @company.picture
-%p
-  %strong Description:
-  = @company.description
-%p
-  %strong Priority:
-  = @company.priority
-%p
-  %strong Categories:
-  = @company.company_categories
-= link_to 'Edit', edit_company_path(@company)
-|
-= link_to 'Back', companies_path
+.company
+  .company__content{style: "background-image: url(#{@company.picture.url})"}
+    .company__profile
+      = image_tag(@company.picture.url)
+      %strong= @company.name
+    %img{src: "https://icongr.am/entypo/heart-outlined.svg?size=30&color=ffffff"}
+
+.section
+  .section__content
+    %h2{style: "margin-bottom: 0"} Descrição
+    %hr{style: "width: 100%; border-size: 2px;"}
+    = @company.description
+
+    %br
+
+    %h2{style: "margin-bottom: 0"} Informações e contato
+    %hr{style: "width: 100%; border-size: 2px;"}
+    - @company.contact_infos.each do |inf|
+      %img{src: "#{inf.icon}"}
+      %strong= inf.name
+      %text= inf.contact
+      %br
+
+    %br
+
+    %h2{style: "margin-bottom: 0"} Endereço e localização
+    %hr{style: "width: 100%; border-size: 2px;"}
+    %text= "Rua: " + @company.address.street
+    %text= "Bairro: " + @company.address.neighbohood
+    %text= "Cidade: " + @company.address.city
+    %text= "Número: " + @company.address.number
+    %text= "Complemento: " + @company.address.complement
+    %text= "CEP: " + @company.address.zip_code
+
+    #map
+
+:javascript
+  // Initialize and add the map
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,
+      center: { lat: -34.397, lng: 150.644 }
+    });
+    const geocoder = new google.maps.Geocoder();
+    geocodeAddress(geocoder, map);
+  }
+
+  function geocodeAddress(geocoder, resultsMap) {
+    const address = "#{@company.address.street + ', número ' + @company.address.number + ', bairro ' + @company.address.neighbohood + ', ' + @company.address.city}";
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        resultsMap.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert("O Aplicativo falhou ao tentar carregar a localização deste estabelecimento pelo seguinte motivo: " + status);
+      }
+    });
+  }

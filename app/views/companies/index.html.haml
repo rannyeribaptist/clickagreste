@@ -11,11 +11,12 @@
 
     - @companies.order("priority desc").each do |company|
       - if company.company_categories.include? params[:category_id]
-        .company-card
-          .company-card__picture
-            .company-background
-            %img{src: "#{company.picture.url}"}
-          .company-card__content
-            %h3= company.name
-            %small= company.description.slice(0, 60) + "..."
+        = link_to company do
+          .company-card
+            .company-card__picture
+              .company-background
+              %img{src: "#{company.picture.url}"}
+            .company-card__content
+              %h3= company.name
+              %small= company.description.slice(0, 60) + "..."
         %br
