@@ -1,21 +1,11 @@
-%p#notice= notice
-%h1 Cities
-%table
-  %thead
-    %tr
-      %th Name
-      %th Picture
-      %th
-      %th{:colspan => "3"}
-  %tbody
+.section
+  .section__content.text-center
+    %p#notice= notice
+    %h1.title Escolha uma cidade
+
     - @cities.each do |city|
-      %tr
-        %td= city.name
-        %td= city.picture
-        %td= link_to "Selecionar", categories_path(city_id: city.id)
-        - if current_user
-          %td= link_to 'Show', city
-          %td= link_to 'Edit', edit_city_path(city)
-          %td= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New City', new_city_path
+      = link_to categories_path(city_id: city.id) do
+        .city-card{style: "background-image: url(#{city.picture.url})"}
+          .city-card__content
+            %h2= city.name
+      %br

@@ -22,3 +22,30 @@
     @include breakpoint("small-up") { padding: 20px }
   }
 }
+
+.city-card {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  position: relative;
+  height: 150px;
+
+  border-radius: 20px;
+
+  &__content {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    border-radius: inherit;
+
+    background-color: #0000004d;
+    color: white;
+
+    width: -webkit-fill-available;
+    height: inherit;
+    padding-left: 30px;
+  }
+}

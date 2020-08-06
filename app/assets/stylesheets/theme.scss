@@ -1,19 +1,5 @@
 // Color Variables, Breakpoints and utils
 @import "components/variables";
-@import "components/section";
-@import "components/split";
-@import "components/text";
-@import "components/button";
-@import "components/columns";
-@import "components/navbar";
-@import "components/testimonial";
-@import "components/color-box";
-@import "components/underline";
-@import "components/card";
-@import "components/footer";
-@import "components/fancy-form";
-@import "components/portfolio-card";
-@import "components/project";
 
 body {
   margin: 0;
@@ -34,4 +20,8 @@ a {
 
   @include breakpoint("small-up") { max-width: 70% }
   @include breakpoint("medium") { max-width: 100% }
+}
+
+.content {
+  margin-top: 75px;
 }

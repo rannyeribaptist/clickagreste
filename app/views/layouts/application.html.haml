@@ -3,15 +3,27 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Clickagreste
+
     = csrf_meta_tags
     = csp_meta_tag
 
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
     -# jQuery (including this CDN because for some reason, the jQuery added with yarn on webpacker doesn't respond properly)
     %script{:crossorigin => "anonymous", :integrity => "sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=", :src => "https://code.jquery.com/jquery-3.5.0.min.js"}
-    
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %p.notice= notice
     %p.alert= alert
-    = yield
+
+    .navbar
+      .navbar__content
+        .navbar__logo
+          = image_tag('icon.png', style: "max-width: 50px;")
+          %strong{style: "color: #f0a440"} ClickAgreste
+        %img{src: "https://icongr.am/clarity/ellipsis-vertical.svg?size=20&color=ffffff"}
+
+    .content
+      = yield
