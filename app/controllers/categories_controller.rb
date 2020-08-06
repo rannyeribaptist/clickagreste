@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.where(city_id: params[:city_id])
+    @city = City.find_by_id(params[:city_id])
+    @categories = Category.where(city_id: @city.id)
   end
 
   # GET /categories/1
