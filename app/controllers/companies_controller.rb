@@ -4,7 +4,9 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.where(city_id: params[:city_id])
+    @category = Category.find_by_id(params[:category_id])
+    @city = City.find_by_id(params[:city_id])
+    @companies = Company.where(city_id: @city.id)
   end
 
   # GET /companies/1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_034245) do
+ActiveRecord::Schema.define(version: 2020_08_06_075402) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_034245) do
     t.string "name"
     t.string "tax_id"
     t.string "picture"
-    t.string "description"
+    t.text "description"
     t.integer "priority", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

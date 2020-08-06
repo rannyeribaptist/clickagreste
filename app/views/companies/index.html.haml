@@ -1,27 +1,21 @@
-%p#notice= notice
-%h1 Companies
-%table
-  %thead
-    %tr
-      %th Name
-      %th Tax
-      %th Picture
-      %th Description
-      %th Priority
-      %th Categories
-      %th{:colspan => "3"}
-  %tbody
+.section
+  .section__content.text-center
+    -# %p#notice= notice
+    .category-card.center
+      .category-card__icon{style: "background-color: #{@category.color}"}
+        %img{src: "#{@category.icon}"}
+    %h3= "Listando " + @category.name + " em " + @city.name
+
+    .fancy-form
+      %input{type: "text", placeholder: "Procure por uma palavra chave...", style: "padding-right: 0; width: 96%;"}
+
     - @companies.order("priority desc").each do |company|
       - if company.company_categories.include? params[:category_id]
-        %tr
-          %td= company.name
-          %td= company.tax_id
-          %td= company.picture
-          %td= company.description
-          %td= company.priority
-          %td= company.categories
-          %td= link_to 'Show', company
-          %td= link_to 'Edit', edit_company_path(company)
-          %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Company', new_company_path
+        .company-card
+          .company-card__picture
+            .company-background
+            %img{src: "#{company.picture.url}"}
+          .company-card__content
+            %h3= company.name
+            %small= company.description.slice(0, 60) + "..."
+        %br

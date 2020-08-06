@@ -73,12 +73,54 @@
     border-radius: 50%;
     display: flex;
 
-    background-image: linear-gradient(0deg, #0000007a, transparent);
+    background-image: linear-gradient(0deg, #0000002e, transparent);
     background-position-y: 35px;
     background-repeat: no-repeat;
   }
 
   &__content {
     margin-top: 10px;
+  }
+}
+
+.company-card {
+  background-color: #f2efd1;
+  border-radius: 20px;
+  width: 100%;
+  height: 130px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__content {
+    text-align: left;
+    width: 70%;
+    padding-left: 10px;
+    color: $brown;
+  }
+
+  &__picture {
+    position: relative;
+    width: 30%;
+    height: inherit;
+    overflow: hidden;
+
+    .company-background {
+      background-image: linear-gradient(90deg, transparent, #f2efd1);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 9;
+    }
+
+    img {
+      position: absolute;
+      z-index: 8;
+      width: auto;
+      height: 100%;
+      left: 0;
+      border-radius: 20px;
+    }
   }
 }
