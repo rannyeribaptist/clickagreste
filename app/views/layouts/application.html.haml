@@ -23,7 +23,8 @@
         .navbar__logo
           = image_tag('icon.png', style: "max-width: 50px;")
           %strong{style: "color: #f0a440"} ClickAgreste
-        %img{src: "https://icongr.am/clarity/ellipsis-vertical.svg?size=20&color=ffffff"}
+        .navbar__links
+          = yield(:navbar_links)
 
     .content
       = yield

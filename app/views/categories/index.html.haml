@@ -2,6 +2,10 @@
   .city-card__content
     %h1= @city.name
 
+- content_for :navbar_links do
+  = link_to :back do
+    %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff"}
+
 .section
   .section__content.text-center
     -# %p#notice= notice

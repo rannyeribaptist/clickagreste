@@ -38,6 +38,13 @@
       margin-top: 10px;
     }
   }
+
+  &__links {
+    margin-top: 5px;
+    img {
+      transform: rotate(-90deg);
+    }
+  }
 }
 
 .menu {
