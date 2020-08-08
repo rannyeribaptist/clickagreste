@@ -16,46 +16,62 @@
     %h2{style: "margin-bottom: 0"} Informações e contato
     %hr{style: "width: 100%; border-size: 2px;"}
     - @company.contact_infos.each do |inf|
-      %img{src: "#{inf.icon}"}
-      %strong= inf.name
-      %text= inf.contact
-      %br
+      .contact-info
+        %img{src: "#{inf.icon}"}
+        %strong= inf.name + ": "
+        %text= inf.contact
 
     %br
 
-    %h2{style: "margin-bottom: 0"} Endereço e localização
-    %hr{style: "width: 100%; border-size: 2px;"}
-    %text= "Rua: " + @company.address.street
-    %text= "Bairro: " + @company.address.neighbohood
-    %text= "Cidade: " + @company.address.city
-    %text= "Número: " + @company.address.number
-    %text= "Complemento: " + @company.address.complement
-    %text= "CEP: " + @company.address.zip_code
+    - if @company.address.present?
+      %h2{style: "margin-bottom: 0"} Endereço e localização
+      %hr{style: "width: 100%; border-size: 2px;"}
+      %text= "Rua: " + @company.address.street
+      %text= "Bairro: " + @company.address.neighbohood
+      %text= "Cidade: " + @company.address.city
+      %text= "Número: " + @company.address.number
+      %text= "Complemento: " + @company.address.complement
+      %text= "CEP: " + @company.address.zip_code
 
-    #map
+      %br
 
-:javascript
-  // Initialize and add the map
-  function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 17,
-      center: { lat: -34.397, lng: 150.644 }
-    });
-    const geocoder = new google.maps.Geocoder();
-    geocodeAddress(geocoder, map);
-  }
+      %a#link{:href => "geo:?q=#{@company.address.street + ', número ' + @company.address.number + ', bairro ' + @company.address.neighbohood + ', ' + @company.address.city}"}
+        #map
 
-  function geocodeAddress(geocoder, resultsMap) {
-    const address = "#{@company.address.street + ', número ' + @company.address.number + ', bairro ' + @company.address.neighbohood + ', ' + @company.address.city}";
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK") {
-        resultsMap.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert("O Aplicativo falhou ao tentar carregar a localização deste estabelecimento pelo seguinte motivo: " + status);
-      }
-    });
-  }
+      :javascript
+        // Initialize and add the map
+        function initMap() {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 17,
+            center: { lat: -34.397, lng: 150.644 }
+          });
+          const geocoder = new google.maps.Geocoder();
+          geocodeAddress(geocoder, map);
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+          const address = "#{@company.address.street + ', número ' + @company.address.number + ', bairro ' + @company.address.neighbohood + ', ' + @company.address.city}";
+          geocoder.geocode({ address: address }, (results, status) => {
+            if (status === "OK") {
+              resultsMap.setCenter(results[0].geometry.location);
+              new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+              });
+            } else {
+              alert("O Aplicativo falhou ao tentar carregar a localização deste estabelecimento pelo seguinte motivo: " + status);
+            }
+          });
+        }
+
+.social-media
+  .social-media__content
+    - if @company.facebook.present?
+      %a{:href => "#{@company.facebook}", target: "_blank"}
+        %img{src: "https://icongr.am/fontawesome/facebook-square.svg?size=20&color=ffffff"}
+    - if @company.instagram.present?
+      %a{:href => "#{@company.instagram}", target: "_blank"}
+        %img{src: "https://icongr.am/fontawesome/instagram.svg?size=20&color=ffffff"}
+    - if @company.whatsapp.present?
+      %a{:href => "https://wa.me/#{@company.whatsapp}", target: "_blank"}
+        %img{src: "https://icongr.am/fontawesome/whatsapp.svg?size=20&color=ffffff"}

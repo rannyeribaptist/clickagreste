@@ -1,0 +1,11 @@
+@import "variables";
+
+.social-media {
+  background-color: $brown;
+
+  &__content {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

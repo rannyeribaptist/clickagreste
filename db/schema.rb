@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_075402) do
+ActiveRecord::Schema.define(version: 2020_08_08_033357) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2020_08_06_075402) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "company_categories", default: "--- []\n"
     t.bigint "city_id", null: false
+    t.string "facebook"
+    t.string "instagram"
+    t.string "whatsapp"
     t.index ["city_id"], name: "index_companies_on_city_id"
   end
 

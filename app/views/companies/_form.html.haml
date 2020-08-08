@@ -17,9 +17,14 @@
     = f.input :description
   .field
     = f.input :priority
+    = f.input :facebook
+    = f.input :whatsapp
+    = f.input :instagram
   .field
     = f.input :company_categories, as: :select, collection: Category.all, label_method: :name, value_method: :id, input_html: { multiple: true }
     = f.input :city_id, as: :select, collection: City.all, label_method: :name
+
+    %h3 Endereço
 
     = f.simple_fields_for :address do |g|
       = g.input :street
@@ -28,6 +33,8 @@
       = g.input :number
       = g.input :complement
       = g.input :zip_code
+
+    %h3 Contatos
 
     #contacts
       = f.simple_fields_for :contact_infos do |h|
