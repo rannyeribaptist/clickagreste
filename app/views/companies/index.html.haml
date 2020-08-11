@@ -1,6 +1,12 @@
 - content_for :navbar_links do
-  = link_to :back do
-    %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff"}
+  %div
+    = link_to categories_url(city_id: params[:city_id]) do
+      %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff", style: "transform: rotate(-90deg)"}
+  %div
+    = link_to favorites_path(category_id: params[:category_id], city_id: params[:city_id]) do
+      %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=ffffff"}
+%br
+%br
 
 .section
   .section__content.text-center
@@ -14,7 +20,7 @@
       %input{type: "text", placeholder: "Procure por uma palavra chave...", style: "padding-right: 0; width: 96%;"}
 
     - @companies.order("priority desc").each do |company|
-      - if company.company_categories.include? params[:category_id]
+      - if company.company_categories.include? params[:category_id].to_s
         = link_to company do
           .company-card
             .company-card__picture

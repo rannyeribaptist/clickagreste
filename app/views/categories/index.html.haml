@@ -1,10 +1,12 @@
--# .city-card.city-card--selected{style: "background-image: url(#{@city.picture.url})"}
-  .city-card__content
-    %h1= @city.name
-
 - content_for :navbar_links do
-  = link_to :back do
-    %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff"}
+  %div
+    = link_to cities_url do
+      %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff", style: "transform: rotate(-90deg)"}
+  %div
+    = link_to favorites_path(city_id: params[:city_id]) do
+      %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=ffffff"}
+%br
+%br
 
 .section
   .section__content.text-center

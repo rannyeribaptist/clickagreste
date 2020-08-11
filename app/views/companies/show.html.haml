@@ -3,7 +3,18 @@
     .company__profile
       = image_tag(@company.picture.url)
       %strong= @company.name
-    %img{src: "https://icongr.am/entypo/heart-outlined.svg?size=30&color=ffffff"}
+    - if not current_user
+      = link_to new_user_registration_path do
+        %img{src: "https://icongr.am/entypo/heart-outlined.svg?size=30&color=ffffff"}
+    - else
+      - if not current_user.favorites.where(:company_id => @company.id).any?
+        = simple_form_for Favorite.new do |f|
+          = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+          = f.input :company_id, as: :hidden, input_html: { value: @company.id }
+          %img{src: "https://icongr.am/entypo/heart-outlined.svg?size=30&color=ffffff", onclick: "$(this).attr('src', 'https://icongr.am/entypo/heart.svg?size=30&color=ffffff'); $(this).closest('form').submit()"}
+      - else
+        = link_to (favorite_path(current_user.favorites.where(company_id: @company.id).first.id)), method: :delete do
+          %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=ffffff", onclick: "$(this).attr('src', 'https://icongr.am/entypo/heart-outline.svg?size=30&color=ffffff')"}
 
 .section
   .section__content

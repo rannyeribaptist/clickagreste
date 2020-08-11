@@ -1,21 +1,24 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.section
+  .section__content
+    %h2 Registrar-se
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "fancy-form" }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        %label{for: "email"} E-mail
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .field
+        %label{for: "password"} Senha (mínimo 6 caracteres)
+        = f.password_field :password, autocomplete: "new-password"
+      .field
+        %label{for: "password_confirmation"} Confirme sua senha
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit "Registrar", class: "button button--orange", style: "background-color: #f0a440 !important"
+
+    %br
+    %br
+
+    %p
+      Já possui uma conta?
+      %a{:href => user_session_path, style: "color: blue"} clique aqui

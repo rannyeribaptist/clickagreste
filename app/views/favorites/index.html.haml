@@ -1,0 +1,51 @@
+- content_for :navbar_links do
+  %div
+    = link_to categories_url(city_id: params[:city_id]) do
+      %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff", style: "transform: rotate(-90deg)"}
+  %div
+    = link_to favorites_path(category_id: params[:category_id]) do
+      %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=ffffff"}
+%br
+%br
+
+.section
+  .section__content.text-center
+    - if @favorites.present?
+      %h2 Favoritos
+
+      - @favorites.each do |favorite|
+        - if params[:category_id].present?
+          -# get in to show only favorites from a specific category
+          - company = favorite.company
+          - if company.company_categories.include? params[:category_id].to_s
+            = link_to company do
+              .company-card
+                .company-card__picture
+                  .company-background
+                  %img{src: "#{company.picture.url}"}
+                .company-card__content
+                  %h3= company.name
+                  %small= company.description.slice(0, 60) + "..."
+        - else
+          -# get in to show all the favorites if there's no specific category
+          - company = favorite.company
+          = link_to company do
+            .company-card
+              .company-card__picture
+                .company-background
+                %img{src: "#{company.picture.url}"}
+              .company-card__content
+                %h3= company.name
+                %small= company.description.slice(0, 60) + "..."
+          %br
+
+    - else
+      %h3 Você não tem nenhum favorito
+
+    - if not current_user
+      %h3 Faça login ou cadastre-se para visualizar seus favoritos
+      .columns.columns--sm
+        .column.column--sm-2
+          %a{:href => user_session_path, style: "color: blue"} Fazer Login
+        .column.column--sm-2
+          %a{:href => new_user_registration_path, style: "color: blue"} Criar conta

@@ -42,8 +42,11 @@
 
   &__links {
     margin-top: 5px;
-    img {
-      transform: rotate(-90deg);
+    display: flex;
+
+    div {
+      width: 50%;
+      text-align: center;
     }
   }
 }

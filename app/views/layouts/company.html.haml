@@ -16,7 +16,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .navbar.navbar--company
-      = link_to :back do
+      = link_to companies_url(category_id: @company.company_categories.last, city_id: @company.city_id) do
         %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff"}
 
     = yield

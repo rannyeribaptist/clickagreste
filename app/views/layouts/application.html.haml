@@ -22,9 +22,9 @@
       .navbar__content
         .navbar__logo
           = image_tag('icon.png', style: "max-width: 50px;")
-          %strong{style: "color: #f0a440"} ClickAgreste
-        .navbar__links
-          = yield(:navbar_links)
+          %strong{style: "color: #f0a440"} ClickAgreste          
+      .navbar__links
+        = yield(:navbar_links)
 
     .content
       = yield

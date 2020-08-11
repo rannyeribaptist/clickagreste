@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   devise_for :users
 
   resources :contact_infos
