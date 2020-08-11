@@ -23,10 +23,13 @@
       - if company.company_categories.include? params[:category_id].to_s
         = link_to company do
           .company-card
-            .company-card__picture
-              .company-background
-              %img{src: "#{company.picture.url}"}
+            = image_tag(company.logo.url)
             .company-card__content
-              %h3= company.name
-              %small= company.description.slice(0, 60) + "..."
-        %br
+              %strong{style: "margin-bottom: 5px"}= company.name
+              %br
+              %small= company.description.slice(0, 40) + "..."
+            .company-card__favorite
+              - if not current_user.favorites.where(:company_id => company.id).any?
+                %img{src: "https://icongr.am/entypo/heart-outlined.svg?size=30&color=000000"}
+              - else
+                %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=e63939"}

@@ -84,14 +84,13 @@
 }
 
 .company-card {
-  background-color: #f2efd1;
-  border-radius: 20px;
   width: 100%;
-  height: 130px;
+  height: 100px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   &__content {
     text-align: left;
@@ -100,27 +99,13 @@
     color: $brown;
   }
 
-  &__picture {
-    position: relative;
+  img {
     width: 30%;
-    height: inherit;
-    overflow: hidden;
+    height: auto;
+  }
 
-    .company-background {
-      background-image: linear-gradient(90deg, transparent, #f2efd1);
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 9;
-    }
-
-    img {
-      position: absolute;
-      z-index: 8;
-      width: auto;
-      height: 100%;
-      left: 0;
-      border-radius: 20px;
-    }
+  &__favorite {
+    width: 20%;
+    img { width: 20px }
   }
 }
