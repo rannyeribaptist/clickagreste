@@ -1,7 +1,7 @@
 .company
   .company__content{style: "background-image: url(#{@company.picture.url})"}
     .company__profile
-      = image_tag(@company.picture.url)
+      = image_tag(@company.logo.url)
       %strong= @company.name
     - if not current_user
       = link_to new_user_registration_path do

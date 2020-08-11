@@ -3,6 +3,7 @@ class Company < ApplicationRecord
 
   serialize :company_categories, Array
   mount_uploader :picture, PicturesUploader
+  mount_uploader :logo, PicturesUploader
 
   has_one :address, dependent: :destroy
   has_many :contact_infos, dependent: :destroy
