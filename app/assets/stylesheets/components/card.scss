@@ -67,6 +67,12 @@
   align-items: center;
   width: 110px;
 
+  &--manager {
+    width: unset;
+    flex-direction: row;
+    justify-content: unset;
+  }
+
   &__icon {
     width: fit-content;
     padding: 20px;

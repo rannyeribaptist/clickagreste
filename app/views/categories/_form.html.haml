@@ -1,4 +1,4 @@
-= simple_form_for(@category) do |f|
+= simple_form_for(@category, html: { class: "fancy-form" }) do |f|
   - if @category.errors.any?
     #error_explanation
       %h2
@@ -8,10 +8,19 @@
         - category.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.input :name
+    = f.input :name, label: "Nome"
   .field
-    = f.input :color
-    = f.input :icon
-    = f.input :city_id, as: :select, collection: City.all, label_method: :name
-  .actions
-    = f.submit
+    = f.input :color, label: "Cor", as: :color
+    = f.input :icon, label: "Link do ícone (tamanho 35, cor branca)"
+
+    %a{:href => "https://icongr.am", target: "_blank"}
+      %small Clique aqui para ir para a página de ícones
+    %br
+    %br
+
+    = f.input :city_id, as: :select, collection: City.all, label_method: :name, label: "Cidade"
+  %br
+  .actions  	
+    %button.button.button--orange{type: "submit"} salvar
+    = link_to @category, method: :delete, "data-confirm" => "Tem certeza que quer excluir esta categoria?" do
+      %button.button.button--red{type: "button"} Excluir

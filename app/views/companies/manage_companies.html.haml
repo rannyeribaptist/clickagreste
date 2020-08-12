@@ -1,0 +1,24 @@
+%br
+
+.section
+  .section__content
+    %h1 Empresas cadastradas
+
+    - @companies.each do |company|
+      - if company.company_categories.include? params[:category_id].to_s
+        = link_to edit_company_path(company) do
+          .company-card
+            = image_tag(company.logo.url)
+            .company-card__content
+              %strong{style: "margin-bottom: 5px"}= company.name
+              %br
+              %text{style: "margin-bottom: 5px"}= company.city.name
+              %br
+              %small{style: "margin-bottom: 5px"}
+                - company.company_categories.each do |category_id|
+                  - if category_id.length > 0
+                    = Category.find_by_id(category_id).name + ", "
+              %br
+              %small Clique para editar/excluir
+
+          %hr{style: "width: 100%"}

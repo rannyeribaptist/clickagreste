@@ -5,8 +5,16 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @city = City.find_by_id(params[:city_id])
-    @categories = Category.where(city_id: @city.id)
+    if current_user.admin?
+      redirect_to manage_categories_path
+    else
+      @city = City.find_by_id(params[:city_id])
+      @categories = Category.where(city_id: @city.id)
+    end
+  end
+
+  def manage_categories
+    @categories = Category.all
   end
 
   # GET /categories/1

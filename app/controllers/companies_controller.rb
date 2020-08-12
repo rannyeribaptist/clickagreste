@@ -6,9 +6,17 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @category = Category.find_by_id(params[:category_id])
-    @city = City.find_by_id(params[:city_id])
-    @companies = Company.where(city_id: @city.id)
+    if current_user.admin?
+      redirect_to manage_companies_path
+    else
+      @category = Category.find_by_id(params[:category_id])
+      @city = City.find_by_id(params[:city_id])
+      @companies = Company.where(city_id: @city.id)
+    end
+  end
+
+  def manage_companies
+    @companies = Company.all
   end
 
   # GET /companies/1

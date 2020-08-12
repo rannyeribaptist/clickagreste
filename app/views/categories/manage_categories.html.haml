@@ -1,0 +1,18 @@
+%br
+
+.section
+  .section__content
+    %h1 Categorias
+
+    - @categories.each do |category|
+      = link_to edit_category_path(category) do
+        .category-card.category-card--manager
+          .category-card__icon{style: "background-color: #{category.color}"}
+            %img{src: "#{category.icon}"}
+          .category-card__content{style: "margin-top: 0; margin-left: 15px"}
+            %strong= category.name
+            %br
+            %text= category.city.name
+            %br
+            %small clique para editar/excluir
+        %br

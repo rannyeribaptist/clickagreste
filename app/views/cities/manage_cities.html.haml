@@ -1,6 +1,8 @@
 %br
 .section
   .section__content
+    %h1 Cidades
+    
     - @cities.each do |city|
       = link_to edit_city_path(city) do
         .city-card{style: "background-image: url(#{city.picture.url})"}

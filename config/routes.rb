@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   root to: "cities#index"
 
   get "/about", to: "application#about", as: :about_page
-  get "manage/cities", to: "cities#manage_cities", as: :manage_cities
+  get "/manage/cities", to: "cities#manage_cities", as: :manage_cities
+  get "/manage/categories", to: "categories#manage_categories", as: :manage_categories
+  get "/manage/companies", to: "companies#manage_companies", as: :manage_companies
 end

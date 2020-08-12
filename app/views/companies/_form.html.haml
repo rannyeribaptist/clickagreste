@@ -1,4 +1,4 @@
-= simple_form_for(@company) do |f|
+= simple_form_for(@company, html: { class: "fancy-form" }) do |f|
   - if company.errors.any?
     #error_explanation
       %h2
@@ -8,32 +8,32 @@
         - company.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.input :name
+    = f.input :name, label: "Nome"
   .field
-    = f.input :tax_id
+    = f.input :tax_id, label: "CNPJ"
   .field
-    = f.input :picture
-    = f.input :logo
+    = f.input :picture, label: "foto de fundo"
+    = f.input :logo, label: "logo"
   .field
-    = f.input :description
+    = f.input :description, label: "descrição", input_html: {style: "min-height: 150px"}
   .field
-    = f.input :priority
-    = f.input :facebook
-    = f.input :whatsapp
-    = f.input :instagram
+    = f.input :priority, label: "prioridade (maiores aparecem primeiro)"
+    = f.input :facebook, label: "link do facebook"
+    = f.input :whatsapp, label: "número do whatsapp (apenas números)"
+    = f.input :instagram, label: "link do instagram"
   .field
-    = f.input :company_categories, as: :select, collection: Category.all, label_method: :name, value_method: :id, input_html: { multiple: true }
-    = f.input :city_id, as: :select, collection: City.all, label_method: :name
+    = f.input :company_categories, as: :select, collection: Category.all, label_method: :name, value_method: :id, input_html: { multiple: true, style: "height: fit-content" }, label: "categorias"
+    = f.input :city_id, as: :select, collection: City.all, label_method: :name, label: "cidade"
 
     %h3 Endereço
 
     = f.simple_fields_for :address do |g|
-      = g.input :street
-      = g.input :neighbohood
-      = g.input :city
-      = g.input :number
-      = g.input :complement
-      = g.input :zip_code
+      = g.input :street, label: "Rua"
+      = g.input :neighbohood, label: "Bairro"
+      = g.input :city, label: "Cidade"
+      = g.input :number, label: "Número"
+      = g.input :complement, label: "complemento"
+      = g.input :zip_code, label: "CEP"
 
     %h3 Contatos
 
@@ -41,6 +41,11 @@
       = f.simple_fields_for :contact_infos do |h|
         = render "contact_info_fields", f: h
       .links
-        = link_to_add_association 'add contact', f, :contact_infos
+        %br
+        = link_to_add_association 'Adicionar contato', f, :contact_infos, class: "button button--blue"
+  %br
+  %br  	  	
   .actions
-    = f.submit
+    %button.button.button--orange{type: "submit"} salvar
+    = link_to @company, method: :delete, "data-confirm" => "Tem certeza que quer excluir esta Empresa?" do
+      %button.button.button--red{type: "button"} Excluir
