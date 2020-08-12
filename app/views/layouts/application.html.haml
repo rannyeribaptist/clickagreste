@@ -40,7 +40,7 @@
             %img{src: "https://icongr.am/feather/user.svg?size=20&color=000000"}
             = link_to "Meu perfil", edit_user_registration_path(current_user)
       .navbar__links
-        - if current_user.admin?
+        - if current_user.present? and current_user.admin?
           %div
             = link_to manage_cities_url do
               %img{src: "https://icongr.am/feather/globe.svg?size=30&color=ffffff"}
