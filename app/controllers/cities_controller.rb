@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
   # GET /cities.json
   def index
     @cities = City.all
-    redirect_to manage_cities_path if current_user.admin?
+    redirect_to manage_cities_path if current_user.present? and current_user.admin?
   end
 
   def manage_cities

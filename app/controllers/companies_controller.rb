@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    if current_user.admin?
+    if current_user.present? and current_user.admin?
       redirect_to manage_companies_path
     else
       @category = Category.find_by_id(params[:category_id])

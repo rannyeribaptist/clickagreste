@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    if current_user.admin?
+    if current_user.present? and current_user.admin?
       redirect_to manage_categories_path
     else
       @city = City.find_by_id(params[:city_id])
