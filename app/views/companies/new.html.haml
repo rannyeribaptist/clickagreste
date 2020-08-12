@@ -3,5 +3,7 @@
 .section
   .section__content
     %h1 Nova empresa
+    = link_to "Adicionar Empresa", new_company_path, class: "button button--brown", style: "width: fit-content"
+    %br    	
 
     = render 'form', company: @company

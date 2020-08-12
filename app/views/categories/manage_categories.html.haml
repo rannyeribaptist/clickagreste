@@ -3,6 +3,9 @@
 .section
   .section__content
     %h1 Categorias
+    = link_to "Adicionar categorias", new_category_path, class: "button button--brown", style: "width: fit-content"
+
+    %br    	
 
     - @categories.each do |category|
       = link_to edit_category_path(category) do
