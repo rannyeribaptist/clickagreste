@@ -1,0 +1,18 @@
+#loading
+  = image_tag('logo', style: "width: 100%")
+  %h1.nav-title Click Agreste
+
+  %small{style: "position: fixed; bottom: 10px; left: 0; right: 0"} v1.0 by Baptist Software
+
+:javascript
+  $(function () {
+    if (sessionStorage.getItem("loaded") != 'true') {
+      $('#loading').toggle();
+
+      sessionStorage.setItem('loaded', 'true');
+
+      window.setTimeout(function() {
+        $('#loading').toggle();
+      }, 2000)
+    }
+  });

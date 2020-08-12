@@ -37,3 +37,15 @@ a {
   left: 0;
   right: 0;
 }
+
+#loading {
+  margin-top: -70px;
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 150vh;
+  text-align: center;
+  background-color: $brown;
+  color: white;
+  display: none;
+}

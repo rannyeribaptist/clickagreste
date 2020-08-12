@@ -20,7 +20,8 @@
         %img{src: "#{inf.icon}"}
         %strong= inf.name + ": "
         %text= inf.contact
-        %img.copy{src: "https://icongr.am/feather/copy.svg?size=16&color=000000", "data-clipboard-text" => "#{inf.contact}", style: "margin-left: 10px"}
+        %a{:href => "#", "data-clipboard-text" => "#{inf.contact}", style: "margin-left: 10px; display: flex"}
+          %img.copy{src: "https://icongr.am/feather/copy.svg?size=16&color=000000"}
 
     %br
 
