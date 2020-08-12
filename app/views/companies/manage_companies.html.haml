@@ -4,6 +4,9 @@
   .section__content
     %h1 Empresas cadastradas
 
+    = link_to "Adicionar Empresa", new_company_path, class: "button button--brown", style: "width: fit-content"
+    %br
+
     - @companies.each do |company|
       - if company.company_categories.include? params[:category_id].to_s
         = link_to edit_company_path(company) do
