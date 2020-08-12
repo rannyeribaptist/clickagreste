@@ -12,6 +12,9 @@
     -# jQuery (including this CDN because for some reason, the jQuery added with yarn on webpacker doesn't respond properly)
     %script{:crossorigin => "anonymous", :integrity => "sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=", :src => "https://code.jquery.com/jquery-3.5.0.min.js"}
 
+    -# Clipboard.js
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"}
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
@@ -22,3 +25,6 @@
     = yield
 
     %script{:defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDjPauRpEMGRD9ZgF2Z2udxsyLNZgvpW3E&callback=initMap"}
+
+    :javascript
+      new ClipboardJS('.copy');

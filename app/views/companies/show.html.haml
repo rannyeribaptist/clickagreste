@@ -20,6 +20,7 @@
         %img{src: "#{inf.icon}"}
         %strong= inf.name + ": "
         %text= inf.contact
+        %img.copy{src: "https://icongr.am/feather/copy.svg?size=16&color=000000", "data-clipboard-text" => "#{inf.contact}", style: "margin-left: 10px"}
 
     %br
 
@@ -63,6 +64,18 @@
             }
           });
         }
+
+        function clipboard(text) {
+          var copyText = text;
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+          /* Copy the text inside the text field */
+          document.execCommand("copy");
+        }
+
 
 .social-media
   .social-media__content

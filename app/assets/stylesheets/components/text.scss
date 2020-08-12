@@ -7,7 +7,7 @@
 
 .title {
   font-size: 30px;
-  font-family: 'nexabold', 'gothammedium';
+  // font-family: 'nexabold', 'gothammedium';
 
   @include breakpoint("medium") { font-size: 40px }
 }

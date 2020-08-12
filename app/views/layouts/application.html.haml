@@ -24,7 +24,8 @@
     .navbar
       .navbar__content
         .navbar__logo
-          = image_tag('icon.png', style: "max-width: 50px;")
+          %a{:href => "/"}
+            = image_tag('icon.png', style: "max-width: 50px;")
           %strong.nav-title Click Agreste
         %img{src: "https://icongr.am/feather/more-vertical.svg?size=30&color=ffffff", onclick: "$('.navbar-options').toggle()"}
       .navbar-options
