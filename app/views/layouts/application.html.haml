@@ -12,6 +12,9 @@
     -# jQuery (including this CDN because for some reason, the jQuery added with yarn on webpacker doesn't respond properly)
     %script{:crossorigin => "anonymous", :integrity => "sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=", :src => "https://code.jquery.com/jquery-3.5.0.min.js"}
 
+    -# Fonts
+    %link{:href => "https://fonts.googleapis.com/css2?family=Chilanka&display=swap", :rel => "stylesheet"}/
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
@@ -22,7 +25,10 @@
       .navbar__content
         .navbar__logo
           = image_tag('icon.png', style: "max-width: 50px;")
-          %strong{style: "color: #f0a440"} ClickAgreste          
+          %strong.nav-title Click Agreste
+        %img{src: "https://icongr.am/feather/more-vertical.svg?size=30&color=ffffff", onclick: "$('.navbar-options').toggle()"}
+      .navbar-options
+        = link_to "Sobre o app", about_page_url
       .navbar__links
         = yield(:navbar_links)
 

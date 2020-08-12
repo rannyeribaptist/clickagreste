@@ -17,7 +17,7 @@
     %h3= "Listando " + @category.name + " em " + @city.name
 
     .fancy-form
-      %input{type: "text", placeholder: "Procure por uma palavra chave...", style: "padding-right: 0; width: 96%;"}
+      %input{type: "text", placeholder: "Procure por uma palavra-chave...", style: "padding-right: 0; width: 96%;"}
 
     - @companies.order("priority desc").each do |company|
       - if company.company_categories.include? params[:category_id].to_s
@@ -34,4 +34,4 @@
               - else
                 %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=e63939"}
 
-      %hr
+      %hr{style: "width: 100%"}

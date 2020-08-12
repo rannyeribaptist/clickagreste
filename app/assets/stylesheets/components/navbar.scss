@@ -35,7 +35,6 @@
       color: #f0a440;
       font-weight: normal;
       font-size: 20px;
-      font-family: fantasy;
       margin-top: 10px;
     }
   }
@@ -66,5 +65,27 @@
   ul {
     list-style: none;
     padding: 0;
+  }
+}
+
+.navbar-options {
+  position: absolute;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  width: 150px;
+  margin-left: 55%;
+  display: none;
+  border: 0.5px solid grey;
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 15px;
+    width: 0;
+    bottom: 99%;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
   }
 }
