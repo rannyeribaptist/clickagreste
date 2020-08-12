@@ -1,0 +1,10 @@
+%br
+.section
+  .section__content
+    - @cities.each do |city|
+      = link_to edit_city_path(city) do
+        .city-card{style: "background-image: url(#{city.picture.url})"}
+          .city-card__content{style: "flex-direction: column; justify-content: center; align-items: flex-start;"}
+            %h2= city.name
+            %small clique para editar/excluir
+        %br

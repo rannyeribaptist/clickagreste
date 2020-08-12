@@ -1,13 +1,9 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Social security number:
-  = @user.social_security_number
-%p
-  %strong Admin:
-  = @user.admin
-= link_to 'Edit', edit_user_path(@user)
-|
-= link_to 'Back', users_path
+.section
+  .section__content
+    %p#notice= notice
+    %p
+      %strong Name:
+      = @user.name
+    = link_to 'Edit', edit_user_path(@user)
+    |
+    = link_to 'Back', users_path

@@ -1,4 +1,4 @@
-= simple_form_for(@city) do |f|
+= simple_form_for(@city, html: { class: "fancy-form" }) do |f|
   - if city.errors.any?
     #error_explanation
       %h2
@@ -8,8 +8,10 @@
         - city.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.input :name
+    = f.input :name, label: "Nome"
   .field
-    = f.input :picture
+    = f.input :picture, label: "Foto"
   .actions
-    = f.submit
+    %button.button.button--orange{type: "submit"} salvar
+    = link_to @city, method: :delete, "data-confirm" => "Tem certeza que quer excluir esta cidade?" do
+      %button.button.button--red{type: "button"} Excluir

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :favorites
   devise_for :users
 
+  resources :favorites
   resources :contact_infos
   resources :companies
   resources :categories
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   root to: "cities#index"
 
   get "/about", to: "application#about", as: :about_page
+  get "manage/cities", to: "cities#manage_cities", as: :manage_cities
 end
