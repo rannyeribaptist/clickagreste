@@ -28,6 +28,8 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.build_address
+    @company.company_pictures.build
+    @company.contact_infos.build
   end
 
   # GET /companies/1/edit
@@ -84,6 +86,7 @@ class CompaniesController < ApplicationController
     def company_params
       params.require(:company).permit(:name, :tax_id, :picture, :logo, :description, :priority, :city_id, :facebook, :instagram, :whatsapp, :company_categories => [],
                                       :address_attributes => [:street, :neighbohood, :number, :zip_code, :city, :complement],
+                                      :company_pictures_attributes => [:picture, :id, :_destroy, :company_id],
                                       :contact_infos_attributes => [:name, :icon, :contact, :id, :_destroy])
     end
 end

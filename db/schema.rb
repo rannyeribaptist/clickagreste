@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_090042) do
+ActiveRecord::Schema.define(version: 2020_08_21_140928) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2020_08_11_090042) do
     t.index ["city_id"], name: "index_companies_on_city_id"
   end
 
+  create_table "company_pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "picture"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_pictures_on_company_id"
+  end
+
   create_table "contact_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "icon"
@@ -98,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_090042) do
   add_foreign_key "addresses", "companies"
   add_foreign_key "categories", "cities"
   add_foreign_key "companies", "cities"
+  add_foreign_key "company_pictures", "companies"
   add_foreign_key "contact_infos", "companies"
   add_foreign_key "favorites", "companies"
   add_foreign_key "favorites", "users"

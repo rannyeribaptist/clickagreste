@@ -7,11 +7,13 @@ class Company < ApplicationRecord
 
   has_one :address, dependent: :destroy
   has_many :contact_infos, dependent: :destroy
+  has_many :company_pictures, dependent: :destroy
 
   belongs_to :city
 
   accepts_nested_attributes_for :address, reject_if: :all_blank, allow_destroy: false
   accepts_nested_attributes_for :contact_infos, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :company_pictures, reject_if: :all_blank, allow_destroy: true
 
   # before_save :validate_presence_address
   # before_save :validate_presence_contact_info

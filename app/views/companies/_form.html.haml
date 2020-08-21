@@ -43,8 +43,15 @@
       .links
         %br
         = link_to_add_association 'Adicionar contato', f, :contact_infos, class: "button button--blue"
+
+    #pictures
+      = f.simple_fields_for :company_pictures do |h|
+        = render "company_pictures_fields", f: h
+      .links
+        %br
+        = link_to_add_association 'Adicionar foto', f, :company_pictures, class: "button button--blue"
   %br
-  %br  	  	
+  %br
   .actions
     %button.button.button--orange{type: "submit"} salvar
     = link_to @company, method: :delete, "data-confirm" => "Tem certeza que quer excluir esta Empresa?" do

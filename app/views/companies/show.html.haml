@@ -5,6 +5,11 @@
       %strong= @company.name
     = render "favorite_button", company: @company
 
+.slide
+  .slide__content
+    - @company.company_pictures.each do |picture|
+      = image_tag(picture.picture.url, class: "company_picture")
+
 .section
   .section__content
     %h2{style: "margin-bottom: 0"} Descrição
