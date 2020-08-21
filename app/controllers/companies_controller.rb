@@ -11,7 +11,26 @@ class CompaniesController < ApplicationController
     else
       @category = Category.find_by_id(params[:category_id])
       @city = City.find_by_id(params[:city_id])
-      @companies = Company.where(city_id: @city.id)
+
+      @filterrific = initialize_filterrific(
+        Company,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Company.options_for_sorted_by,
+        }
+      ) or return
+      @companies = @filterrific.find.page(params[:page])
+      @companies = @filterrific.find.where(:city_id => @city.id).page(params[:page]) if params[:city_id].present?
+
+      if params[:filterrific].present?
+        @category = Category.find_by_id(params[:filterrific][:category_id])
+        @city = City.find_by_id(params[:filterrific][:city_id])
+      end
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
   end
 

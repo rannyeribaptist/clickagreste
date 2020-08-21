@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Filterrific is a Rails Engine plugin that makes it easy to filter, search, and sort your ActiveRecord lists
 gem 'filterrific'
+gem 'will_paginate'
 # This gem provides a simple and extremely flexible way to upload files from Ruby applications.
 gem 'carrierwave', '~> 2.0'
 # Rails forms made easy.
