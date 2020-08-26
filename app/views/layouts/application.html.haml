@@ -29,8 +29,11 @@
         .navbar__logo
           %a{:href => "/"}
             = image_tag('icon.png', style: "max-width: 50px;")
-          %strong.nav-title Click Agreste
-        %img{src: "https://icongr.am/feather/more-vertical.svg?size=30&color=ffffff", onclick: "$('.navbar-options').toggle()"}
+          %div
+            = image_tag('name.png', style: "max-width: 150px; margin-bottom: -15px")
+            %br
+            %small.color--brown{style: "margin-left: 5px"} Seu guia comercial
+        %img{src: "https://icongr.am/feather/more-vertical.svg?size=30&color=292521", onclick: "$('.navbar-options').toggle()"}
       %ul.navbar-options
         %li
           %img{src: "https://icongr.am/feather/info.svg?size=20&color=000000"}

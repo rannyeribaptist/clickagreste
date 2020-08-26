@@ -57,3 +57,7 @@ a {
   width: 400px;
   height: auto;
 }
+
+.color {
+  @include colors("color");
+}

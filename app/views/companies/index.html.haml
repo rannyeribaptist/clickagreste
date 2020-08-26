@@ -2,13 +2,13 @@
   %div
     - if params[:filterrific].present?
       = link_to categories_url(city_id: params[:filterrific][:city_id]) do
-        %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff", style: "transform: rotate(-90deg)"}
+        %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=292521", style: "transform: rotate(-90deg)"}
     - else
       = link_to categories_url(city_id: params[:city_id]) do
-        %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=ffffff", style: "transform: rotate(-90deg)"}
+        %img{src: "https://icongr.am/clarity/arrow.svg?size=30&color=292521", style: "transform: rotate(-90deg)"}
   %div
     = link_to favorites_path(category_id: params[:category_id], city_id: params[:city_id]) do
-      %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=ffffff"}
+      %img{src: "https://icongr.am/entypo/heart.svg?size=30&color=292521"}
 %br
 %br
 
