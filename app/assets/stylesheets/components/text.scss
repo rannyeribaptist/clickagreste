@@ -29,3 +29,8 @@
 
   @include colors("color");
 }
+
+h1 {
+  color: $brown;
+  font-family: 'Chilanka', cursive;
+}
