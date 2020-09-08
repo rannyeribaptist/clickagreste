@@ -46,7 +46,7 @@
 
     #pictures
       = f.simple_fields_for :company_pictures do |h|
-        = render "company_pictures_fields", f: h
+        = render "company_picture_fields", f: h
       .links
         %br
         = link_to_add_association 'Adicionar foto', f, :company_pictures, class: "button button--blue"
