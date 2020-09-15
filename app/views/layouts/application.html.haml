@@ -38,6 +38,9 @@
         %li
           %img{src: "https://icongr.am/feather/info.svg?size=20&color=000000"}
           = link_to "Sobre o app", about_page_url
+        %li
+          %img{src: "https://icongr.am/feather/lock.svg?size=20&color=000000"}
+          = link_to "Política de privacidade", policy_url
         - if current_user.present?
           %li
             %img{src: "https://icongr.am/feather/user.svg?size=20&color=000000"}

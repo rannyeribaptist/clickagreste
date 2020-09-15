@@ -1,17 +1,17 @@
-#loading
-  = image_tag('name.png', style: "width: 100%; margin-top: 50%")
+#loading.loading
+  = image_tag('name.png')
 
   %small{style: "position: fixed; bottom: 10px; left: 0; right: 0; color: black"} v1.0 by Baptist Software
 
 :javascript
   $(function () {
     if (sessionStorage.getItem("loaded") != 'true') {
-      $('#loading').toggle();
+      $('#loading').addClass("loading--active");
 
       sessionStorage.setItem('loaded', 'true');
 
       window.setTimeout(function() {
-        $('#loading').toggle();
+        $('#loading').removeClass('loading--active');
       }, 2000)
     }
   });

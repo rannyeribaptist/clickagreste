@@ -38,7 +38,9 @@ a {
   right: 0;
 }
 
-#loading {
+.loading {
+  height: 100vh;
+  overflow: hidden;
   margin-top: -70px;
   position: absolute;
   z-index: 99999;
@@ -46,11 +48,16 @@ a {
   height: 100vh;
   text-align: center;
   background-color: $wheat;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   display: none;
+
+  img {
+    width: 100%;
+    margin: auto;
+  }
+
+  &--active {
+    display: flex;
+  }
 }
 
 .company_picture {
