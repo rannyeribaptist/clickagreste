@@ -16,7 +16,7 @@
 
     %br
 
-    - @categories.each_slice(3) do |categories|
+    - @categories.order("name asc").each_slice(3) do |categories|
       .columns.columns--small{style: "display: flex; justify-content: space-evenly;"}
         - categories.each do |category|
           .column.column--sm-3
