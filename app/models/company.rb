@@ -18,7 +18,7 @@ class Company < ApplicationRecord
   # before_save :validate_presence_address
   # before_save :validate_presence_contact_info
 
-  self.per_page = 10
+  # self.per_page = 10
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },

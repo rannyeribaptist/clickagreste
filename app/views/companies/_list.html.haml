@@ -1,4 +1,4 @@
-- @companies.order("priority desc").each do |company|
+- @companies.order("name asc").order("priority desc").each do |company|
   - if not params[:filterrific].present?
     - if company.company_categories.include? params[:category_id].to_s
       = link_to company do
