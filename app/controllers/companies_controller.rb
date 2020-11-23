@@ -21,6 +21,7 @@ class CompaniesController < ApplicationController
       ) or return
       @companies = @filterrific.find.page(params[:page])
       @companies = @filterrific.find.where(:city_id => @city.id).page(params[:page]) if params[:city_id].present?
+      @companies.order("name asc").order("priority desc")
 
       if params[:filterrific].present?
         @category = Category.find_by_id(params[:filterrific][:category_id])
