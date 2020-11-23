@@ -32,16 +32,7 @@ class Company < ApplicationRecord
   scope :search_query, lambda { |query| where("name LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%") }
   scope :city_id, lambda { |city_id| where("city_id LIKE ?", "#{city_id}") }
 
-  scope :sorted_by, lambda { |sort_option|
-    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
-
-    case sort_option.to_s
-      when /^created_at/
-        order("LOWER(companies.created_at) #{ direction }")
-      else
-        raise(ArgumentError, "Opção inválida: #{ sort_option.inspect }")
-      end
-  }
+  scope :sorted_by, lambda { |option| order("name asc").order("priority desc") }
 
   def self.options_for_sorted_by
     [
