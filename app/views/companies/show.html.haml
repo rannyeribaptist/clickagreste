@@ -92,5 +92,5 @@
       %a{:href => "#{@company.instagram}", target: "_blank"}
         %img{src: "https://icongr.am/fontawesome/instagram.svg?size=20&color=292521"}
     - if @company.whatsapp.present?
-      %a{:href => "https://wa.me/#{@company.whatsapp}", target: "_blank"}
+      %a{:href => "https://api.whatsapp.com/send?phone=#{@company.whatsapp}&text=Ol%C3%A1!%20Vim%20pelo%20app%20do%20Click%20Agreste!", target: "_blank"}
         %img{src: "https://icongr.am/fontawesome/whatsapp.svg?size=20&color=292521"}
