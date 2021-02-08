@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'filterrific'
 gem 'will_paginate'
 # This gem provides a simple and extremely flexible way to upload files from Ruby applications.
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # Rails forms made easy.
 gem 'simple_form'
 # Haml-rails provides Haml generators for Rails 5.
